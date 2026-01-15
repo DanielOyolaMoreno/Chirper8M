@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('memes_chirps', function (Blueprint $table) {
+         Schema::create('chirps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-            $table->string("image_url");
-            $table->string('mensaje',255);
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('image_url', 255)->nullable();
+            $table->string('mensaje', 255);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('chirps');
     }
 };
