@@ -28,18 +28,36 @@
                 @endif
             </div>
 
-            {{-- Chirp Image --}}
-            <div class="flex-1 flex flex-col items-center justify-center overflow-hidden">
-                @if($chirp->image_url)
-                    <img src="{{ $chirp->image_url }}" alt="Chirp Image" class="rounded-lg w-full h-auto max-h-[70vh] object-cover">
+            {{-- Bulo --}}
+            <div class="flex-1 flex flex-col items-center justify-center overflow-hidden w-full">
+                @if($chirp->bulo)
+                    <div class="rounded-lg w-full max-h-[70vh] p-4 bg-gray-50 text-left text-sm text-gray-800 break-words">{{ $chirp->bulo }}</div>
+                @else
+                    <div class="text-sm text-gray-400">Sin bulo</div>
                 @endif
             </div>
 
-            {{-- Botón Chirp --}}
-            <button @click.stop="flipped = true"
-                    class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded shadow mx-auto block">
-                Chirp
-            </button>
+            {{-- Botones: Eliminar / Chirp / Editar (en línea) --}}
+            <div class="mt-4 flex items-center justify-center space-x-3">
+                @can('update', $chirp)
+                    <form method="POST" action="/chirps8M/{{ $chirp->id }}" onsubmit="return confirm('¿Eliminar este chirp?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded shadow">
+                            Eliminar
+                        </button>
+                    </form>
+
+                    <a href="/chirps8M/{{ $chirp->id }}/edit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded shadow">
+                        Editar
+                    </a>
+                @endcan
+
+                <button @click.stop="flipped = true"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow">
+                    Chirp
+                </button>
+            </div>
 
         </div>
 

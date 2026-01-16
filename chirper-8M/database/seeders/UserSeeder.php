@@ -2,13 +2,30 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
     public function run()
     {
-        User::factory(10)->create(); // Crea 10 usuarios usando el factory
+        $usuarios = [
+            ['name' => 'Test User', 'email' => 'test@example.com', 'password' => 'password'],
+            ['name' => 'Sofía López', 'email' => 'sofia@example.com', 'password' => 'password123'],
+            ['name' => 'Miguel Fernández', 'email' => 'miguel@example.com', 'password' => '12345678'],
+            ['name' => 'Laura Martínez', 'email' => 'laura@example.com', 'password' => 'larau123'],
+        ];
+
+        foreach ($usuarios as $usuario) {
+            User::updateOrCreate(
+                ['email' => $usuario['email']],
+                [
+                    'name' => $usuario['name'],
+                    'email' => $usuario['email'],
+                    'password' => Hash::make($usuario['password']),
+                ]
+            );
+        }
     }
 }

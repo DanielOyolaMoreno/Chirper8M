@@ -7,6 +7,12 @@
     <div class="max-w-2xl mx-auto">
         <h1 class="text-3xl font-bold mt-8">Latest Chirps</h1>
 
+        @if(session('success'))
+            <div class="alert alert-success mt-4">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <!-- Chirp Form -->
         <div class="card bg-base-100 shadow mt-8">
             <div class="card-body">
@@ -25,9 +31,10 @@
                     @endif
 
                     <div class="form-control w-full">
+                        Meme
                         <textarea
                             name="mensaje"
-                            placeholder="¿Qué tienes en mente?"
+                            placeholder="Escribe tu meme aquí..."
                             class="textarea textarea-bordered w-full resize-none @error('mensaje') textarea-error @enderror"
                             rows="4"
                             maxlength="255"
@@ -36,6 +43,7 @@
 
                         @error('mensaje')
                             <div class="label">
+                                
                                 <span class="label-text-alt text-error">{{ $message }}</span>
                             </div>
                         @enderror
@@ -43,11 +51,11 @@
 
                     <div class="form-control w-full mt-4">
                         <label class="label">
-                            <span class="label-text">Imagen (opcional)</span>
+                            <span class="label-text">Bulo</span>
                         </label>
-                        <input type="file" name="image" accept="image/*" class="file-input file-input-bordered w-full" />
+                        <input type="text" name="bulo" placeholder="Texto del bulo" class="input input-bordered w-full @error('bulo') input-error @enderror" value="{{ old('bulo') }}" required />
 
-                        @error('image')
+                        @error('bulo')
                             <div class="label">
                                 <span class="label-text-alt text-error">{{ $message }}</span>
                             </div>
@@ -56,7 +64,7 @@
 
                     <div class="mt-4 flex items-center justify-end">
                         <button type="submit" class="btn btn-primary btn-sm">
-                            Chirp
+                            Guardar Chirp
                         </button>
                     </div>
                 </form>

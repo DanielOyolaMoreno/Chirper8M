@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Chirps extends Model
 {
     protected $fillable = [
-        'image_url',
+        'bulo',
         'mensaje',
         'user_id',
     ];

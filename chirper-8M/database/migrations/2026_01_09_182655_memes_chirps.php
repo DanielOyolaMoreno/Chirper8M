@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('chirps', function (Blueprint $table) {
+            Schema::create('chirps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('image_url', 255)->nullable();
-            $table->string('mensaje', 255);
+                $table->string('bulo', 255);
+                $table->string('mensaje', 255);
             $table->timestamps();
         });
     }
