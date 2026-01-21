@@ -3,6 +3,7 @@
 use App\Http\Controllers\MemeController;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Login;
+use App\Http\Controllers\Auth\Logout;
 use Illuminate\Support\Facades\Route;
 
 // Ruta pública (todos pueden verla)
@@ -32,10 +33,7 @@ Route::view('/login', 'auth.login')
 Route::post('/login', Login::class)
 	->middleware('guest');
 
-// Logout
-Route::post('/logout', function () {
-	auth()->logout();
-	request()->session()->invalidate();
-	request()->session()->regenerateToken();
-	return redirect('/');
-})->middleware('auth');
+// Logout route
+Route::post('/logout', Logout::class)
+	->middleware('auth')
+	->name('logout');

@@ -5,7 +5,7 @@
     </x-slot:title>
 
     <div class="max-w-2xl mx-auto">
-        <h1 class="text-3xl font-bold mt-8">Latest Chirps</h1>
+        <h1 class="text-3xl font-bold mt-8">Crear Meme</h1>
 
         @if(session('success'))
             <div class="alert alert-success mt-4">
@@ -64,7 +64,7 @@
 
                     <div class="mt-4 flex items-center justify-end">
                         <button type="submit" class="btn btn-primary btn-sm">
-                            Guardar Chirp
+                            Guardar Meme
                         </button>
                     </div>
                 </form>
