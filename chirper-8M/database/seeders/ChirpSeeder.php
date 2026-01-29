@@ -11,10 +11,10 @@ class ChirpSeeder extends Seeder
     {
         $users = User::take(3)->get();
 
-        $bulos = [ // Cambia $memes a $bulos para claridad
+        $bulos = [
             [
                 'bulo' => 'Las mujeres conducen peor que los hombres',
-                'texto' => 'Los datos de la DGT desmontan el mito: los hombres protagonizan el 80% de los accidentes mortales y el 90% de las infracciones por alcohol y drogas. Aunque las mujeres tienen accidentes leves en ciudad, su conducción es mucho más segura, responsable y menos costosa para las aseguradoras.',
+                'texto' => 'Datos DGT: l hombres causan 80% de accidentes mortales y 90% de infracciones por drogas/alcohol. Aunque ellas tienen golpes leves en ciudad, su conducción es más segura y barata para las aseguradoras.',
             ],
             [
                 'bulo' => 'Las mujeres exageran el acoso',
@@ -30,32 +30,53 @@ class ChirpSeeder extends Seeder
             ],
             [
                 'bulo' => 'Las mujeres tienen más privilegios legales que los hombres',
-                'texto' => 'Las leyes de igualdad buscan corregir desigualdades históricas. No otorgan privilegios, sino que promueven la igualdad de oportunidades y protegen a quienes están en desventaja.',
+                'texto' => 'No son privilegios, es justicia. El Art. 9.2 de la Constitución obliga a remover obstáculos para una igualdad real. Las acciones positivas compensan desventajas de partida históricas y estructurales.',
             ],
             [
                 'bulo' => 'Las mujeres son menos competentes en trabajos técnicos y científicos',
-                'texto' => 'Numerosos estudios demuestran que no hay diferencias innatas en capacidad intelectual entre hombres y mujeres. Las diferencias en representación se deben a factores sociales y culturales, no a capacidades.',
+                'texto' => 'Falso. En España, las mujeres obtienen el 54% de los títulos universitarios con mejor rendimiento medio (Min. Universidades). La brecha en STEM es cultural: a igual capacidad, los estereotipos alejan a las niñas de la ciencia.',
             ],
             [
                 'bulo' => 'Las mujeres son más emocionales e irracionales que los hombres',
-                'texto' => 'Las investigaciones en neurociencia muestran que hombres y mujeres procesan las emociones de manera similar. Las diferencias percibidas son resultado de estereotipos y expectativas sociales.',
+                'texto' => 'Meta-análisis de estudios cerebrales (Univ. Tel Aviv) no hallaron dimorfismo sexual claro en cerebros humanos. La supuesta "irracionalidad" es un prejuicio histórico para deslegitimar su criterio.',
             ],
             [
                 'bulo' => 'Las mujeres no son aptas para roles de liderazgo',
-                'texto' => 'Estudios indican que las mujeres líderes suelen ser tan efectivas como los hombres. La falta de representación femenina en altos cargos se debe a barreras estructurales y sesgos de género, no a falta de capacidad.',
+                'texto' => 'Error económico. El Peterson Institute (22.000 empresas) probó que pasar de 0% al 30% de mujeres directivas aumenta un 15% la rentabilidad. El liderazgo diverso es más eficiente y rentable.',
             ],
             [
                 'bulo' => 'Las mujeres prefieren trabajos menos exigentes',
-                'texto' => 'Las elecciones profesionales de las mujeres están influenciadas por normas sociales y responsabilidades familiares. Muchas mujeres optan por carreras menos remuneradas debido a la falta de apoyo para equilibrar trabajo y vida personal.',
+                'texto' => 'No es preferencia, es carga de cuidados. El 94% de las personas que no buscan empleo por cuidar a dependientes son mujeres (EPA). La falta de corresponsabilidad frena sus carreras.',
             ],
             [
                 'bulo' => 'Las mujeres son menos interesadas en la política',
-                'texto' => 'La participación política de las mujeres ha aumentado significativamente. Las barreras culturales y estructurales han limitado su participación histórica, pero el interés y la implicación están en aumento.',
+                'texto' => 'Falso. La ONU estima que las mujeres son el 26% de parlamentarios mundiales (subiendo desde el 11% en 1995). No falta interés, faltaban derechos y sobran techos de cristal partidistas.',
             ],
+            [
+                'bulo' => 'La violencia de género no existe, la violencia no tiene género',
+                'texto' => 'Datos del CGPJ y Ministerio del Interior: más del 85% de las víctimas de violencia en la pareja son mujeres. Es un problema estructural de desigualdad, no casos aislados bi direccionales al 50%.',
+            ],
+            [
+                'bulo' => 'Las feministas quieren acabar con la familia',
+                'texto' => 'El feminismo busca democratizar los cuidados. Según el INE, las mujeres dedican el doble de tiempo a hogar y familia que los hombres. Se busca reparto equitativo, no destrucción de vínculos.',
+            ],
+            [
+                'bulo' => 'Ya hay igualdad real, las leyes ahora discriminan al hombre',
+                'texto' => 'El Foro Económico Mundial estima 130 años para cerrar la brecha de género global. Las leyes de acción positiva son herramientas temporales para corregir desventajas históricas de partida, no discriminación.',
+            ],
+            [
+                'bulo' => 'El techo de cristal es un mito, no suben porque no quieren',
+                'texto' => 'Siendo el 58% de tituladas universitarias, ocupan menos del 30% de puestos directivos en el IBEX 35. Las barreras invisibles y la falta de conciliación frenan el ascenso, no la falta de ambición.',
+            ],
+            [
+                'bulo' => 'El acoso callejero son solo piropos',
+                'texto' => 'Estudios de Plan International: el 66% de jóvenes ha sufrido acoso callejero. Genera inseguridad y miedo, no agrado. Si no hay consentimiento, opinar sobre el cuerpo ajeno es agresión, no halago.',
+            ],
+            
         ];
 
-        foreach ($bulos as $bulo) { // Cambia $memes a $bulos, $meme a $bulo
-            $users->random()->chirps()->create([ // Cambia memes() a bulos()
+        foreach ($bulos as $bulo) {
+            $users->random()->chirps()->create([
                 'bulo' => $bulo['bulo'],
                 'mensaje' => $bulo['texto'],
             ]);
